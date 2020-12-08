@@ -57,6 +57,6 @@ function findAndParseContainedBags(bagColor, bagRules) {
 }
 
 console.log(
-  `Part 1 solution: ${getAllPossibleOuterBags(["shiny gold"], bagRules).length}`
+  `Part 1 solution: ${getAllPossibleOuterBags("shiny gold", bagRules).length}`
 );
 console.log(`Part 2 solution: ${bagContains("shiny gold", bagRules)}`);
