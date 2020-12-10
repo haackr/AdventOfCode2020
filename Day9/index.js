@@ -39,9 +39,9 @@ function findContiguousSet(number, list) {
       sum += list[j];
       // console.log(i, j, sum);
       if (sum === number) {
-        console.log("range found");
+        // console.log("range found");
         const subList = list.filter((num, index) => index >= i && index <= j);
-        console.log(subList);
+        // console.log(subList);
         return Math.max(...subList) + Math.min(...subList);
       }
     }
