@@ -1,7 +1,7 @@
 const fs = require("fs");
 
 function inputToArray(file) {
-  var arr = fs.readFileSync("./input.txt").toString().split("\n");
+  var arr = fs.readFileSync(file).toString().split("\n");
   arr = arr.map((n) => Number(n));
   return arr;
 }
