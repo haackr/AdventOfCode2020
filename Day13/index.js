@@ -38,24 +38,37 @@ function getGaps(busList) {
   return gaps;
 }
 
-console.log(getGaps(busses));
+// console.log(getGaps(busses));
 
+// ?
 function winGoldCoin(busList) {
   const busses = busList
     .filter((bus) => bus !== "x")
     .map((bus) => parseInt(bus));
   let gaps = getGaps(busList);
 
-  let searchString = "";
+  // let searchString = "";
 
-  for (let i = 0; i < busses.length; i++) {
-    searchString += `(t+${gaps[i]}) mod ${busses[i]} = 0; `;
+  // for (let i = 0; i < busses.length; i++) {
+  //   searchString += `(t+${gaps[i]}) mod ${busses[i]} = 0; `;
+  // }
+  // console.log(searchString); // Plug this into wolfram alpha, lol. Maybe I'll learn chinese number theorem another time.
+  let time = 0;
+  let step = busses[0];
+  for (let i = 1; i < busses.length; i++) {
+    let found = false;
+    while (!found) {
+      time += step;
+      if ((time + gaps[i]) % busses[i] === 0) {
+        found = true;
+        step *= busses[i];
+      }
+    }
   }
-  console.log(searchString);
+  return time;
 }
-
-console.log(winGoldCoin(busses));
 
 // console.log(inServiceBusses);
 const part1 = findEarliest(inServiceBusses, time);
 console.log(`Part 1 solution: ${part1.bus * part1.wait}`);
+console.log(`Part 2 solution: ${winGoldCoin(busses)}`);
